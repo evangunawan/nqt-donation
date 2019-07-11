@@ -1,0 +1,11 @@
+main: com.evangunawan.donation.Main
+name: Donations
+version: 1
+author: motionfrog
+description: Donation handler for this server.
+api-version: 1.13
+
+commands:
+  donate:
+    description: Donation command
+    usage: "/donate"
