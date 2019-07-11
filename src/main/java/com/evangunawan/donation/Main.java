@@ -2,29 +2,33 @@ package com.evangunawan.donation;
 
 import com.evangunawan.donation.Commands.CommandDonate;
 import com.evangunawan.donation.Commands.CommandUtil;
+import com.evangunawan.donation.Util.DatabaseHandler;
 import com.evangunawan.donation.Util.PermissionHandler;
-import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.io.File;
-import java.io.IOException;
+
 
 public class Main extends JavaPlugin {
     private File myConfig;
-    private YamlConfiguration mainConfig;
+    private FileConfiguration mainConfig;
 
     @Override
     public void onEnable() {
         getLogger().info("Donation plugin enabled.");
         this.getCommand("donate").setExecutor(new CommandDonate());
+
+        initConfigs();
+
+        mainConfig = new YamlConfiguration();
+        mainConfig = getConfig();
         PermissionHandler.setupPermissions();
         initPlayerList();
-        initConfigs();
+        DatabaseHandler.init(mainConfig);
+
     }
 
     private void initPlayerList(){
