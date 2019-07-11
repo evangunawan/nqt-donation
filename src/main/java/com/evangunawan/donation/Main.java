@@ -9,11 +9,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import java.io.File;
-
 
 public class Main extends JavaPlugin {
-    private File myConfig;
     private FileConfiguration mainConfig;
 
     @Override
@@ -21,28 +18,30 @@ public class Main extends JavaPlugin {
         getLogger().info("Donation plugin enabled.");
         this.getCommand("donate").setExecutor(new CommandDonate());
 
-        initConfigs();
 
+        //Configs Initialization
+        initConfigs();
         mainConfig = new YamlConfiguration();
         mainConfig = getConfig();
-        PermissionHandler.setupPermissions();
+
+        //Initializations
         initPlayerList();
+        PermissionHandler.setupPermissions();
         DatabaseHandler.init(mainConfig);
 
     }
 
-    private void initPlayerList(){
-        if(Bukkit.getServer().getOfflinePlayers() != null){
-            for(OfflinePlayer player : Bukkit.getServer().getOfflinePlayers()){
+    private void initPlayerList() {
+        if (Bukkit.getServer().getOfflinePlayers() != null) {
+            for (OfflinePlayer player : Bukkit.getServer().getOfflinePlayers()) {
                 CommandUtil.playerList.add(player);
 
             }
         }
     }
 
-    private void initConfigs(){
+    private void initConfigs() {
         saveDefaultConfig();
-
         saveConfig();
     }
 

@@ -16,14 +16,18 @@ public class CommandDonate implements CommandExecutor {
             if (args.length < 2) {
                 if (args.length==0) {
                     sender.sendMessage("Donate at website.");
-
                 } else {
+                    Player target = (Player) sender;
                     if (args[0].equalsIgnoreCase("list")) {
                         String list = "";
                         for (OfflinePlayer player : CommandUtil.playerList) {
                             list += player.getName() + ", ";
                         }
                         sender.sendMessage("All Registered Players: " + list);
+                    }
+                    if (args[0].equalsIgnoreCase("status")){
+                        String[] targetGroups = PermissionHandler.getPerms().getPlayerGroups(target);
+                        sender.sendMessage("Your Groups: " + targetGroups);
                     }
                 }
 

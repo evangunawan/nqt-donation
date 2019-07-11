@@ -1,6 +1,9 @@
 package com.evangunawan.donation.Util;
 
+import com.evangunawan.donation.Main;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +20,7 @@ public class DatabaseHandler {
 
     private static Connection dbconn;
 
-    public static void init(FileConfiguration config){
+    public static void init(FileConfiguration config) {
 
         dbHost = config.getString("database.host");
         dbName = config.getString("database.database");
@@ -35,8 +38,8 @@ public class DatabaseHandler {
 
     }
 
-    private static synchronized void openConnection() throws SQLException, ClassNotFoundException{
-        if(dbconn != null && !dbconn.isClosed()){
+    private static synchronized void openConnection() throws SQLException, ClassNotFoundException {
+        if (dbconn != null && !dbconn.isClosed()) {
             return;
         }
 
@@ -46,4 +49,15 @@ public class DatabaseHandler {
 
     }
 
+//    public static void testStatement(Plugin plugin) {
+//        BukkitRunnable dbRunnable = new BukkitRunnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("TestStatement called.");
+//            }
+//        };
+//
+//        dbRunnable.runTaskAsynchronously(plugin);
+//
+//    }
 }
