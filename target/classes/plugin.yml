@@ -9,4 +9,4 @@ depend:
 commands:
   donate:
     description: Donation command
-    usage: "Usage: /donate [give|status|list]"
+    usage: "&6Usage: /donate"

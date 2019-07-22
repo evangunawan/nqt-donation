@@ -1,6 +1,7 @@
 package com.evangunawan.donation.Commands;
 
 import com.evangunawan.donation.Util.PermissionHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,40 +11,39 @@ import org.bukkit.entity.Player;
 
 public class CommandDonate implements CommandExecutor {
 
+    private Player target;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player || sender instanceof ConsoleCommandSender) {
-            if (args.length < 2) {
-                if (args.length==0) {
-                    sender.sendMessage("Donate at website.");
-                } else {
-                    Player target = (Player) sender;
-                    if (args[0].equalsIgnoreCase("list")) {
-                        String list = "";
-                        for (OfflinePlayer player : CommandUtil.playerList) {
-                            list += player.getName() + ", ";
-                        }
-                        sender.sendMessage("All Registered Players: " + list);
-                    }
-                    if (args[0].equalsIgnoreCase("status")){
-                        String[] targetGroups = PermissionHandler.getPerms().getPlayerGroups(target);
-                        sender.sendMessage("Your Groups: " + targetGroups);
-                    }
-                }
-
-            } else if (args.length == 2) {
-                String playerName = args[1];
-                Player target = CommandUtil.getTargetPlayer(playerName);
-
-                if (args[0].equalsIgnoreCase("give")) {
-                    target.sendMessage("You have been donated. Thank you.");
-
-                } else if (args[0].equalsIgnoreCase("status")) {
-                    String[] targetGroups = PermissionHandler.getPerms().getPlayerGroups(target);
-                    sender.sendMessage("Groups: " + targetGroups + "\nDonate: donation");
-                }
+            if(args.length == 0){
+                sender.sendMessage("Donate at website.");
+                return true;
             }
-            return true;
+
+            if(args.length > 0){
+                target = (Player) sender;
+                if(args.length == 2){
+                    target = CommandUtil.getTargetPlayer(args[1]);
+
+                    if(target == null){
+                        sender.sendMessage(ChatColor.RED + "ERROR: Player not found.");
+                        return true;
+                    }
+
+                    if (args[0].equalsIgnoreCase("give")) {
+                        target.sendMessage(ChatColor.GOLD + "You have been donated. Thank you.");
+                        return true;
+                    }
+                }
+
+                if (args[0].equalsIgnoreCase("status")) {
+                    String[] targetGroups = PermissionHandler.getPerms().getPlayerGroups(target);
+                    sender.sendMessage("Player: " + target.getName() + "\nGroups: " + targetGroups + "\nDonate: donation");
+                    return true;
+                }
+
+            }
         }
         return false;
     }

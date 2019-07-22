@@ -45,7 +45,6 @@ public class DatabaseHandler {
 
         Class.forName("com.mysql.jdbc.Driver");
         dbconn = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName, dbUser, dbPass);
-        System.out.println("Donations > Database Connected.");
 
     }
 
