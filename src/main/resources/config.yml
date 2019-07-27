@@ -4,3 +4,8 @@ database:
   user: "root"
   password: "password"
   database: "mydb"
+donations:
+  plus:
+    group: "plus"
+  vip:
+    group: "vip"

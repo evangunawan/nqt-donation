@@ -5,6 +5,7 @@ import com.evangunawan.donation.Commands.CommandUtil;
 import com.evangunawan.donation.Util.DatabaseHandler;
 import com.evangunawan.donation.Util.PermissionHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,18 +17,20 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Donation plugin enabled.");
-        this.getCommand("donate").setExecutor(new CommandDonate());
-
+        this.getCommand("donate").setExecutor(new CommandDonate(getServer()));
 
         //Configs Initialization
-        initConfigs();
+        saveDefaultConfig();
         mainConfig = new YamlConfiguration();
         mainConfig = getConfig();
 
         //Initializations
         initPlayerList();
         PermissionHandler.setupPermissions();
-        DatabaseHandler.init(mainConfig);
+        DatabaseHandler.init(mainConfig,this.getServer());
+        CommandUtil.initDonationTiers(mainConfig);
+
+        getLogger().info("Loaded " + CommandUtil.tiers.size() + " donation tiers.");
 
     }
 
@@ -38,11 +41,6 @@ public class Main extends JavaPlugin {
 
             }
         }
-    }
-
-    private void initConfigs() {
-        saveDefaultConfig();
-        saveConfig();
     }
 
 }
