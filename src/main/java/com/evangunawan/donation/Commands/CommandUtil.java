@@ -43,17 +43,28 @@ public class CommandUtil {
         return null;
     }
 
+    public static boolean isPlayerExist(String name){
+        Player target = Bukkit.getPlayer(name);
+
+        if(target != null){
+            return true;
+        }else{
+            for (OfflinePlayer pl : playerList){
+                if (pl.getName().equalsIgnoreCase(name)){
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
     public static Player getTargetPlayer(String name){
         Player target = Bukkit.getPlayer(name);
 
-        if(target==null){
-            return null;
+        if(target != null){
+            return target;
         }else{
-            if(target.isOnline() || playerList.contains(target) ){
-                return target;
-            }else{
-                return null;
-            }
+            return null;
         }
     }
 }

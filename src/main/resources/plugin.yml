@@ -9,4 +9,6 @@ depend:
 commands:
   donate:
     description: Donation command
-    usage: "&6Usage: /donate"
+    usage: "§6Bad usage. /donate help for more."
+  offplayers:
+    description: return size of OfflinePlayer.

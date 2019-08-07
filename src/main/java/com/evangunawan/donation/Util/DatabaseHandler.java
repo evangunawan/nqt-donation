@@ -58,15 +58,38 @@ public class DatabaseHandler {
             if(foundUser.next() == false){
                 return 0;
             }else{
-                while(foundUser.next()){
-                    int idFound = foundUser.getInt("id");
-                    return idFound;
-                }
+                int idFound = foundUser.getInt("id");
+                sv.getLogger().info("DEBUG: Found userId: " + idFound);
+                return idFound;
+//                while(foundUser.next()){
+//                    int idFound = foundUser.getInt("id");
+//                    return idFound;
+//                }
             }
         }catch(SQLException ex){
             ex.printStackTrace();
         }
         return 0;
+    }
+
+    public static synchronized boolean isDonated(String user){
+        try {
+            Statement st = dbconn.createStatement();
+            Integer userId = getUserId(user);
+
+            String sqlQuery = "SELECT * FROM donations WHERE user_id=" + userId + ";";
+            ResultSet userDonation = st.executeQuery(sqlQuery);
+
+            if(userDonation.next() == false){
+                return false;
+            }else{
+                return true;
+            }
+
+        } catch (SQLException e) {
+            sv.getLogger().warning("SQL ERROR: " + e.getMessage());
+        }
+        return true;
     }
 
     public static synchronized boolean addDonation(String user, String groupName) {
@@ -76,19 +99,17 @@ public class DatabaseHandler {
             //GetUserId
             Integer userId = getUserId(user);
 
-            String sqlQuery = "SELECT users.username, donations.donation_tier FROM donations JOIN users ON donations.user_id=users.id";
-            ResultSet userDonation = st.executeQuery(sqlQuery);
-
-            if(userDonation.next() == false){
+            if(!isDonated(user)){
                 String insertNewDonator = "INSERT INTO donations VALUES (" + userId + ",'" + groupName + "',"+ java.lang.System.currentTimeMillis() +");" ;
-                st.executeQuery(insertNewDonator);
+                st.executeUpdate(insertNewDonator);
                 return true;
             }else{
-                //Do nothing.
-                return false;
+                //User is already donated. Do nothing.
+                throw new Exception("User is already donated.");
+//                return false;
             }
 
-        }catch (SQLException ex){
+        }catch (Exception ex){
             sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
         }
         return false;
@@ -100,28 +121,17 @@ public class DatabaseHandler {
             Statement st = dbconn.createStatement();
             Integer userId = getUserId(user);
 
-            String sqlQuery = "DELETE FROM donations WHERE user_id=" + userId + ";";
-            st.executeQuery(sqlQuery);
+            if(isDonated(user)){
+                String sqlQuery = "DELETE FROM donations WHERE user_id=" + userId + ";";
+                st.executeUpdate(sqlQuery);
 
-            return true;
+                return true;
+            }
 
         }catch(SQLException ex){
-
+            sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
         }
-
-
         return false;
     }
 
-//    public static void testStatement(Plugin plugin) {
-//        BukkitRunnable dbRunnable = new BukkitRunnable() {
-//            @Override
-//            public void run() {
-//                System.out.println("TestStatement called.");
-//            }
-//        };
-//
-//        dbRunnable.runTaskAsynchronously(plugin);
-//
-//    }
 }

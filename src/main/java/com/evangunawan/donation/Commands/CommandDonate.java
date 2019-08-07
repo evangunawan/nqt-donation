@@ -25,83 +25,57 @@ public class CommandDonate implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player || sender instanceof ConsoleCommandSender) {
             if (args.length == 0) {
-                sender.sendMessage("Donate at website.");
+                sender.sendMessage(ChatColor.GOLD + "Donate at website.");
                 return true;
-            }
-
-            if (args.length > 0) {
-                target = (Player) sender;
-                if (args.length == 2) {
-                    target = CommandUtil.getTargetPlayer(args[1]);
-                    if (target == null) {
-                        sender.sendMessage(ChatColor.RED + "ERROR: Player not found.");
-                        return true;
-                    }
-                    if (args[0].equalsIgnoreCase("give")) {
-                        sender.sendMessage(ChatColor.GOLD + "/donate give " + target.getName() + " [tier]");
-                        return true;
-                    }
-
-                }
-                if (args.length > 2) {
-                    boolean playerAlreadyDonated = false;
-                    String playerGroup;
-                    playerGroup = CommandUtil.getTargetSingleGroup(target);
-                    target = CommandUtil.getTargetPlayer(args[1]);
-
-                    //Check player's group, already donated/not.
-                    for (DonationTier item : CommandUtil.tiers) {
-                        if (playerGroup.equalsIgnoreCase(item.getGroupName())) {
-                            playerAlreadyDonated = true;
-                        }
-                    }
-
-                    if (args[0].equalsIgnoreCase("give")) {
-                        String groupName = CommandUtil.getTierGroup(args[2]);
-                        if (target != null && groupName != null) {
-
-                            //Give the target donation group, update the database.
-                            if (!playerAlreadyDonated) {
-                                if (DatabaseHandler.addDonation(target.getName(), groupName)) {
-                                    //Entry added to database, give user the group.
-//                                    PermissionHandler.getPerms().playerRemoveGroup(target,playerGroup);
-//                                    PermissionHandler.getPerms().playerAddGroup(target,groupName);
-                                    server.dispatchCommand(server.getConsoleSender(), "manuadd " + target.getName() + " " + groupName);
-                                    sender.sendMessage(ChatColor.GREEN + "Successfully gave donation to player.");
-                                } else {
-                                    sender.sendMessage(ChatColor.RED + "ERROR: Database entry already found for the user.");
-                                }
-                            } else {
-                                sender.sendMessage(ChatColor.RED + "ERROR: Player is already donated.");
-                            }
-                        } else {
-                            sender.sendMessage(ChatColor.RED + "ERROR: Player/Group not found.");
-                        }
-                        return true;
-                    }
-
-                    //TODO:ADD DELETE DONATION.
-                    if (args[0].equalsIgnoreCase("remove")) {
-                        if (playerAlreadyDonated) {
-                            //TODO:Add previous group, to rollback group promotion.
-                            if(DatabaseHandler.removeDonation(target.getName())){
-                                server.dispatchCommand(server.getConsoleSender(), "manuadd " + target.getName() + " player");
-                            }else{
-                                sender.sendMessage(ChatColor.RED + "ERROR: Sql query error.");
-                            }
-                        }
-                    }
-                }
-
-                if (args[0].equalsIgnoreCase("status")) {
-                    String[] targetGroups = PermissionHandler.getPerms().getPlayerGroups(target);
-                    for (String group : targetGroups) {
-                        sender.sendMessage("Player: " + target.getName() + "\nGroups: " + targetGroups.toString());
-                    }
+            }else{
+                if (args.length == 1 && args[0].equalsIgnoreCase("status")) {
+                    target = (Player) sender;
+                    String targetGroups = CommandUtil.getTargetSingleGroup(target);
+                    sender.sendMessage("Group: "+ targetGroups);
 
                     return true;
                 }
 
+                if (args[0].equalsIgnoreCase("give")) {
+                    if(args.length < 3){
+                        sender.sendMessage(ChatColor.GOLD + "/donate give [player] [tier]");
+                        return false;
+                    }
+                    String groupName = CommandUtil.getTierGroup(args[2]);
+                    if (CommandUtil.isPlayerExist(args[1]) && groupName!=null) {
+                        if (DatabaseHandler.addDonation(args[1], groupName)) {
+
+                            //Entry added to database, give user the group.
+                            server.dispatchCommand(server.getConsoleSender(), "manuadd " + args[1] + " " + groupName);
+                            sender.sendMessage(ChatColor.GREEN + "Successfully gave donation to player.");
+
+                        } else {
+                            sender.sendMessage(ChatColor.RED + "ERROR: Database entry already found for the user, or SQL error (Check Console)");
+                        }
+
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "ERROR: Player/Group not found.");
+                    }
+                    return true;
+                }else if(args[0].equalsIgnoreCase("remove")){
+                    if(args.length == 1){
+                        sender.sendMessage(ChatColor.GOLD + "/donate remove [player]");
+                        return false;
+                    }
+                    if(CommandUtil.isPlayerExist(args[1])){
+                        if(DatabaseHandler.removeDonation(args[1])){
+                            server.dispatchCommand(server.getConsoleSender(), "manuadd " + args[1] + " player");
+                            sender.sendMessage(ChatColor.GREEN + "Successfully moved the player to default group.");
+                        }else{
+                            sender.sendMessage(ChatColor.RED + "ERROR: Sql query error. Check console for more information.");
+                        }
+                    }else{
+                        sender.sendMessage(ChatColor.RED + "ERROR: Player not found.");
+
+                    }
+
+                    return true;
+                }
             }
         }
         return false;

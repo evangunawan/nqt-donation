@@ -7,28 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8375281-ef6d-440e-88ad-f7a00877d9a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/out/artifacts/nqt_donation_jar/nqt-donation.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/out/artifacts/nqt_donation_jar/nqt-donation.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/out/production/nqt-donation/com/evangunawan/donation/Commands/CommandDonate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/out/production/nqt-donation/com/evangunawan/donation/Commands/CommandUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/out/production/nqt-donation/com/evangunawan/donation/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/out/production/nqt-donation/com/evangunawan/donation/PlayerJoin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/evangunawan/donation/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/evangunawan/donation/Util/PermissionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nqt-donation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/nqt-donation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/nqt_donation_jar/nqt-donation.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/nqt_donation_jar/nqt-donation.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandDonate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandDonate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Model/DonationTier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Model/DonationTier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DatabaseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DatabaseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/PermissionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/PermissionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,19 +52,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="75" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
+            <state relative-caret-position="722">
+              <caret line="131" column="68" selection-start-line="131" selection-start-column="68" selection-end-line="131" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,19 +64,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Model/DonationTier.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="841">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+            <state relative-caret-position="187">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-15">
+              <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,34 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="87" column="120" selection-start-line="87" selection-start-column="120" selection-end-line="87" selection-end-column="120" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#651#652#0" expanded="true" />
-                <element signature="e#985#1488#1" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="32" column="50" lean-forward="true" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -142,6 +113,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>target</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,12 +136,12 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/PermissionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Model/DonationTier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java" />
       </list>
     </option>
@@ -207,7 +183,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -307,6 +282,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -317,8 +293,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564219392796" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-8.0.16.jar!/" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565178811983" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -369,17 +345,21 @@
       <workItem from="1563804111140" duration="4858000" />
       <workItem from="1564157303085" duration="4706000" />
       <workItem from="1564216439542" duration="2984000" />
+      <workItem from="1564978992550" duration="3256000" />
+      <workItem from="1564982838879" duration="317000" />
+      <workItem from="1564983251528" duration="2076000" />
+      <workItem from="1565173271999" duration="5503000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32746000" />
+    <option name="totallyTimeSpent" value="43898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28837952" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20522387" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -431,20 +411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/github/MilkBowl/VaultAPI/1.7/VaultAPI-1.7.jar!/net/milkbowl/vault/permission/Permission.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -469,26 +435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="75" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -496,25 +442,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="32" column="50" lean-forward="true" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+        <state relative-caret-position="595">
+          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/Exception.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="87" column="120" selection-start-line="87" selection-start-column="120" selection-end-line="87" selection-end-column="120" />
+        <state relative-caret-position="299">
+          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+          <folding>
+            <element signature="e#2241#2242#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="131" column="68" selection-start-line="131" selection-start-column="68" selection-end-line="131" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#985#1488#1" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -578,6 +564,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
