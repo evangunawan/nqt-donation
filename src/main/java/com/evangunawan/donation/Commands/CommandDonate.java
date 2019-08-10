@@ -36,10 +36,17 @@ public class CommandDonate implements CommandExecutor {
                     return true;
                 }
 
+                //Below is admin commands.
+                //Permission check
+                if(!sender.hasPermission("donation.admin")){
+                    sender.sendMessage(ChatColor.RED + "You are not permitted to use this command.");
+                    return true;
+                }
+
                 if (args[0].equalsIgnoreCase("give")) {
                     if(args.length < 3){
                         sender.sendMessage(ChatColor.GOLD + "/donate give [player] [tier]");
-                        return false;
+                        return true;
                     }
                     String groupName = CommandUtil.getTierGroup(args[2]);
                     if (CommandUtil.isPlayerExist(args[1]) && groupName!=null) {
@@ -60,7 +67,7 @@ public class CommandDonate implements CommandExecutor {
                 }else if(args[0].equalsIgnoreCase("remove")){
                     if(args.length == 1){
                         sender.sendMessage(ChatColor.GOLD + "/donate remove [player]");
-                        return false;
+                        return true;
                     }
                     if(CommandUtil.isPlayerExist(args[1])){
                         if(DatabaseHandler.removeDonation(args[1])){

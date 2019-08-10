@@ -11,4 +11,9 @@ commands:
     description: Donation command
     usage: "§6Bad usage. /donate help for more."
   offplayers:
+    permission: donation.admin
     description: return size of OfflinePlayer.
+permissions:
+  donation.admin:
+    description: allow to use the command.
+    default: op
