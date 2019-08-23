@@ -1,12 +1,14 @@
 package com.evangunawan.donation.Util;
 
 import com.evangunawan.donation.Main;
+import com.evangunawan.donation.Model.Donation;
 import org.bukkit.Server;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class DatabaseHandler {
@@ -98,9 +100,12 @@ public class DatabaseHandler {
 
             //GetUserId
             Integer userId = getUserId(user);
+            long period = Long.parseLong("2592000000");
+            long endTime = Long.sum(java.lang.System.currentTimeMillis(), period);
 
             if(!isDonated(user)){
-                String insertNewDonator = "INSERT INTO donations VALUES (" + userId + ",'" + groupName + "',"+ java.lang.System.currentTimeMillis() +");" ;
+                String insertNewDonator = "INSERT INTO donations (user_id, current_tier, donate_start, donate_end) " +
+                        "VALUES (" + userId + ",'" + groupName + "',"+ java.lang.System.currentTimeMillis() +", " + endTime + ");" ;
                 st.executeUpdate(insertNewDonator);
                 return true;
             }else{
@@ -132,6 +137,34 @@ public class DatabaseHandler {
             sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
         }
         return false;
+    }
+
+    public static synchronized ArrayList<Donation> getDonationList(){
+        ArrayList<Donation> results = new ArrayList<>();
+        try{
+            Statement st = dbconn.createStatement();
+            String query = "SELECT users.username, donations.donate_start, donations.donate_end" +
+                    "FROM donations" +
+                    "JOIN users ON donations.user_id=users.id";
+            ResultSet rs = st.executeQuery(query);
+
+            //Handle if there is any rows in table.
+            if(!rs.next()){
+                return null;
+            }
+            rs.beforeFirst(); //Undo the cursor before first.
+
+            while(rs.next()){
+                Donation donate = new Donation();
+                donate.setUsername(rs.getString("username"));
+                donate.setStartDate(rs.getInt("donate_start"));
+                donate.setEndDate(rs.getInt("donate_end"));
+                results.add(donate);
+            }
+        }catch(SQLException ex){
+            sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
+        }
+        return results;
     }
 
 }

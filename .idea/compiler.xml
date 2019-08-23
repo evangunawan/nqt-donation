@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
-      <module name="nqt-donation" target="11" />
+      <module name="nqt-donation" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -3,6 +3,7 @@ package com.evangunawan.donation;
 import com.evangunawan.donation.Commands.CommandDonate;
 import com.evangunawan.donation.Commands.CommandUtil;
 import com.evangunawan.donation.Util.DatabaseHandler;
+import com.evangunawan.donation.Util.DonationHandler;
 import com.evangunawan.donation.Util.PermissionHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -33,10 +34,10 @@ public class Main extends JavaPlugin {
         PermissionHandler.setupPermissions();
         DatabaseHandler.init(mainConfig,this.getServer());
         CommandUtil.initDonationTiers(mainConfig);
+        DonationHandler.init();
 
         getLogger().info("Loaded " + CommandUtil.tiers.size() + " donation tiers.");
         getLogger().info("Loaded " + CommandUtil.playerList.size() + " offline players");
-
     }
 
     private void initPlayerList() {

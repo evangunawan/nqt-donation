@@ -14,7 +14,6 @@ import org.bukkit.entity.Player;
 public class CommandDonate implements CommandExecutor {
 
     private Player target;
-
     private Server server;
 
     public CommandDonate(Server server) {
@@ -83,6 +82,7 @@ public class CommandDonate implements CommandExecutor {
 
                     return true;
                 }
+                //TODO: Add /donate extend [user] to extend user's donation with 1 period (1 month)
             }
         }
         return false;
