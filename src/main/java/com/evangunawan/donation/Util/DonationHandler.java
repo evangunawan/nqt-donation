@@ -16,7 +16,9 @@ public class DonationHandler {
             Bukkit.getServer().getLogger().info("Did not found any active donations.");
         }
 
-        //TODO: finish this.
+    }
+
+    private static void startCheckerThread(){
 
     }
 

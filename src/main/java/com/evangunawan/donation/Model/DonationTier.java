@@ -8,7 +8,7 @@ public class DonationTier {
         return group_name;
     }
 
-    public void setGroup_name(String group_name) {
+    public void setGroupName(String group_name) {
         this.group_name = group_name;
     }
 }

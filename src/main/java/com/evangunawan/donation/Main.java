@@ -22,12 +22,14 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Donation plugin enabled.");
-        this.getCommand("donate").setExecutor(new CommandDonate(getServer()));
 
         //Configs Initialization
         saveDefaultConfig();
         mainConfig = new YamlConfiguration();
         mainConfig = getConfig();
+
+        //Commands
+        this.getCommand("donate").setExecutor(new CommandDonate(getServer(), mainConfig));
 
         //Initializations
         initPlayerList();

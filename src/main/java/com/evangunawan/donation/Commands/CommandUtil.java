@@ -20,7 +20,7 @@ public class CommandUtil {
         ConfigurationSection donationTiers = config.getConfigurationSection("donations");
         for (String x : donationTiers.getKeys(false)){
             DonationTier dt = new DonationTier();
-            dt.setGroup_name(donationTiers.getString(x + ".group"));
+            dt.setGroupName(donationTiers.getString(x + ".group"));
 
             tiers.add(dt);
         }
@@ -31,7 +31,6 @@ public class CommandUtil {
         String[] targetGroups;
         targetGroups = PermissionHandler.getPerms().getPlayerGroups(user);
         return Arrays.asList(targetGroups).get(0);
-
     }
 
     public static String getTierGroup(String targetGroup){

@@ -2,18 +2,18 @@ package com.evangunawan.donation.Model;
 
 public class Donation {
     private String username;
-    private int startDate;
-    private int endDate;
+    private long startDate;
+    private long endDate;
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setStartDate(int startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 
@@ -21,11 +21,11 @@ public class Donation {
         return username;
     }
 
-    public int getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public int getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 

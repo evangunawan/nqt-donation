@@ -104,7 +104,7 @@ public class DatabaseHandler {
             long endTime = Long.sum(java.lang.System.currentTimeMillis(), period);
 
             if(!isDonated(user)){
-                String insertNewDonator = "INSERT INTO donations (user_id, current_tier, donate_start, donate_end) " +
+                String insertNewDonator = "INSERT INTO donations (user_id, donate_current_tier, donate_start, donate_end) " +
                         "VALUES (" + userId + ",'" + groupName + "',"+ java.lang.System.currentTimeMillis() +", " + endTime + ");" ;
                 st.executeUpdate(insertNewDonator);
                 return true;
@@ -143,8 +143,8 @@ public class DatabaseHandler {
         ArrayList<Donation> results = new ArrayList<>();
         try{
             Statement st = dbconn.createStatement();
-            String query = "SELECT users.username, donations.donate_start, donations.donate_end" +
-                    "FROM donations" +
+            String query = "SELECT users.username, donations.donate_start, donations.donate_end " +
+                    "FROM donations " +
                     "JOIN users ON donations.user_id=users.id";
             ResultSet rs = st.executeQuery(query);
 
@@ -157,8 +157,8 @@ public class DatabaseHandler {
             while(rs.next()){
                 Donation donate = new Donation();
                 donate.setUsername(rs.getString("username"));
-                donate.setStartDate(rs.getInt("donate_start"));
-                donate.setEndDate(rs.getInt("donate_end"));
+                donate.setStartDate(rs.getLong("donate_start"));
+                donate.setEndDate(rs.getLong("donate_end"));
                 results.add(donate);
             }
         }catch(SQLException ex){

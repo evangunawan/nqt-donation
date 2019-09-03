@@ -7,5 +7,13 @@ database:
 donations:
   plus:
     group: "plus"
+    commands-start:
+      - "manuadd {player} plus"
+      - "eco give {player} 2000"
   vip:
     group: "vip"
+    commands-start:
+      - "manuadd {player} vip"
+settings:
+  global-command-end:
+    - "manuadd {player} player"
