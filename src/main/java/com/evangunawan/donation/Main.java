@@ -3,6 +3,7 @@ package com.evangunawan.donation;
 import com.evangunawan.donation.Commands.CommandDonate;
 import com.evangunawan.donation.Commands.CommandUtil;
 import com.evangunawan.donation.Util.DatabaseHandler;
+import com.evangunawan.donation.Util.DonationCommandExecutor;
 import com.evangunawan.donation.Util.DonationHandler;
 import com.evangunawan.donation.Util.PermissionHandler;
 import org.bukkit.Bukkit;
@@ -29,19 +30,18 @@ public class Main extends JavaPlugin {
         mainConfig = getConfig();
 
         //Commands
-        this.getCommand("donate").setExecutor(new CommandDonate(getServer(), mainConfig));
+        this.getCommand("donate").setExecutor(new CommandDonate(mainConfig));
 
         //Initializations
         initPlayerList();
         PermissionHandler.setupPermissions();
         DatabaseHandler.init(mainConfig,this.getServer());
         CommandUtil.initDonationTiers(mainConfig);
-        DonationHandler.init();
+        DonationHandler.init(this,mainConfig);
 
         getLogger().info("Loaded " + CommandUtil.tiers.size() + " donation tiers.");
         getLogger().info("Loaded " + CommandUtil.playerList.size() + " offline players");
     }
-
     private void initPlayerList() {
         if (Bukkit.getServer().getOfflinePlayers() != null) {
             getLogger().info("Loading Offline Players...");

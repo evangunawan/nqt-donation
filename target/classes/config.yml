@@ -17,3 +17,4 @@ donations:
 settings:
   global-command-end:
     - "manuadd {player} player"
+  checker-interval: 72000

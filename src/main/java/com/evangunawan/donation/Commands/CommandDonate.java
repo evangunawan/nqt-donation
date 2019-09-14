@@ -1,8 +1,10 @@
 package com.evangunawan.donation.Commands;
 
+import com.evangunawan.donation.Model.Donation;
 import com.evangunawan.donation.Model.DonationTier;
 import com.evangunawan.donation.Util.DatabaseHandler;
 import com.evangunawan.donation.Util.DonationCommandExecutor;
+import com.evangunawan.donation.Util.DonationHandler;
 import com.evangunawan.donation.Util.PermissionHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -13,14 +15,16 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class CommandDonate implements CommandExecutor {
 
     private Player target;
-    private Server server;
     private DonationCommandExecutor cmdExecutor;
 
-    public CommandDonate(Server server, FileConfiguration config) {
-        this.server = server;
+    public CommandDonate(FileConfiguration config) {
         cmdExecutor = new DonationCommandExecutor(config);
     }
 
@@ -33,9 +37,13 @@ public class CommandDonate implements CommandExecutor {
             }else{
                 if (args.length == 1 && args[0].equalsIgnoreCase("status")) {
                     target = (Player) sender;
-                    String targetGroups = CommandUtil.getTargetSingleGroup(target);
-                    sender.sendMessage("Group: "+ targetGroups);
-
+                    Donation donation = DonationHandler.getDonation(sender.getName());
+                    if(donation!= null){
+                        Date end_date = DatabaseHandler.getDonationEnd(sender.getName());
+                        DateFormat df = new SimpleDateFormat("dd MMMM yyyy");
+                        sender.sendMessage(ChatColor.GOLD + "You are currently donated in " + donation.getTier() + " tier.\n" +
+                                "Your donation is available until : " + df.format(end_date));
+                    }
                     return true;
                 }
 
@@ -56,7 +64,6 @@ public class CommandDonate implements CommandExecutor {
                         if (DatabaseHandler.addDonation(args[1], groupName)) {
                             //Entry added to database, give user the group.
                             cmdExecutor.executeStartCommand(args[1],groupName);
-//                            server.dispatchCommand(server.getConsoleSender(), "manuadd " + args[1] + " " + groupName);
                             sender.sendMessage(ChatColor.GREEN + "Successfully gave donation to player.");
 
                         } else {
@@ -75,7 +82,6 @@ public class CommandDonate implements CommandExecutor {
                     if(CommandUtil.isPlayerExist(args[1])){
                         if(DatabaseHandler.removeDonation(args[1])){
                             cmdExecutor.executeEndCommand(args[1]);
-//                            server.dispatchCommand(server.getConsoleSender(), "manuadd " + args[1] + " player");
                             sender.sendMessage(ChatColor.GREEN + "Successfully removed player donation.");
                         }else{
                             sender.sendMessage(ChatColor.RED + "ERROR: Sql query error. Check console for more information.");
@@ -85,8 +91,21 @@ public class CommandDonate implements CommandExecutor {
                     }
 
                     return true;
+                } else if (args[0].equalsIgnoreCase("extend")){
+                    if(args.length == 1){
+                        sender.sendMessage(ChatColor.GOLD + "/donate extend [player]");
+                        return true;
+                    }
+                    if(CommandUtil.isPlayerExist(args[1])){
+                        if(DatabaseHandler.extendDonation(args[1])){
+                            sender.sendMessage(ChatColor.GREEN + "Successfully extends player donation.");
+                        }else{
+                            sender.sendMessage(ChatColor.RED + "ERROR: Sql query error. Check console for more information.");
+                        }
+                    }else{
+                        sender.sendMessage(ChatColor.RED + "ERROR: Player not found.");
+                    }
                 }
-                //TODO: Add /donate extend [user] to extend user's donation with 1 period (1 month)
             }
         }
         return false;

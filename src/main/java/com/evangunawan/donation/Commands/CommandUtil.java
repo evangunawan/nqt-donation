@@ -24,7 +24,6 @@ public class CommandUtil {
 
             tiers.add(dt);
         }
-
     }
 
     public static String getTargetSingleGroup(Player user){

@@ -7,23 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8375281-ef6d-440e-88ad-f7a00877d9a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/nqt_donation_jar/nqt-donation.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/nqt_donation_jar/nqt-donation.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandDonate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Commands/CommandUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Model/Donation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Model/Donation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Model/DonationTier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Model/DonationTier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DonationCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DonationCommandExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DonationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evangunawan/donation/Util/DonationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandDonate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandDonate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Commands/CommandUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Model/DonationTier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Model/DonationTier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Model/Donation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Model/Donation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DatabaseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DatabaseHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DonationCommandExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DonationCommandExecutor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DonationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/evangunawan/donation/Util/DonationHandler.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,12 +70,6 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="46" />
-    <option name="y" value="26" />
-    <option name="width" value="1320" />
-    <option name="height" value="742" />
-  </component>
   <component name="ProjectId" id="1PdRdmhY9zDSIhfDnpHUjsJvu9o" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -100,7 +93,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">

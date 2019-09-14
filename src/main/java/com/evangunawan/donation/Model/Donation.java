@@ -4,6 +4,7 @@ public class Donation {
     private String username;
     private long startDate;
     private long endDate;
+    private String tier;
 
     public void setUsername(String username) {
         this.username = username;
@@ -17,6 +18,8 @@ public class Donation {
         this.endDate = endDate;
     }
 
+    public void setTier(String tier) {this.tier = tier;}
+
     public String getUsername() {
         return username;
     }
@@ -28,6 +31,8 @@ public class Donation {
     public long getEndDate() {
         return endDate;
     }
+
+    public String getTier() { return tier; }
 
 
 }

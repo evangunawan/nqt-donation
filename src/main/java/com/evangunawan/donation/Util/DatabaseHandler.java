@@ -50,31 +50,31 @@ public class DatabaseHandler {
 
     }
 
-    private static synchronized int getUserId(String username){
+    private static synchronized int getUserId(String username) {
 
-        try{
+        try {
             Statement st = dbconn.createStatement();
             String query = "SELECT id,username FROM users WHERE username='" + username + "';";
             ResultSet foundUser = st.executeQuery(query);
 
-            if(foundUser.next() == false){
+            if (foundUser.next() == false) {
                 return 0;
-            }else{
+            } else {
                 int idFound = foundUser.getInt("id");
-                sv.getLogger().info("DEBUG: Found userId: " + idFound);
+//                sv.getLogger().info("DEBUG: Found userId: " + idFound);
                 return idFound;
 //                while(foundUser.next()){
 //                    int idFound = foundUser.getInt("id");
 //                    return idFound;
 //                }
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return 0;
     }
 
-    public static synchronized boolean isDonated(String user){
+    public static synchronized boolean isDonated(String user) {
         try {
             Statement st = dbconn.createStatement();
             Integer userId = getUserId(user);
@@ -82,9 +82,9 @@ public class DatabaseHandler {
             String sqlQuery = "SELECT * FROM donations WHERE user_id=" + userId + ";";
             ResultSet userDonation = st.executeQuery(sqlQuery);
 
-            if(userDonation.next() == false){
+            if (userDonation.next() == false) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
 
@@ -95,7 +95,7 @@ public class DatabaseHandler {
     }
 
     public static synchronized boolean addDonation(String user, String groupName) {
-        try{
+        try {
             Statement st = dbconn.createStatement();
 
             //GetUserId
@@ -103,65 +103,101 @@ public class DatabaseHandler {
             long period = Long.parseLong("2592000000");
             long endTime = Long.sum(java.lang.System.currentTimeMillis(), period);
 
-            if(!isDonated(user)){
+            if (!isDonated(user)) {
                 String insertNewDonator = "INSERT INTO donations (user_id, donate_current_tier, donate_start, donate_end) " +
-                        "VALUES (" + userId + ",'" + groupName + "',"+ java.lang.System.currentTimeMillis() +", " + endTime + ");" ;
+                        "VALUES (" + userId + ",'" + groupName + "'," + java.lang.System.currentTimeMillis() + ", " + endTime + ");";
                 st.executeUpdate(insertNewDonator);
                 return true;
-            }else{
+            } else {
                 //User is already donated. Do nothing.
                 throw new Exception("User is already donated.");
 //                return false;
             }
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
         }
         return false;
 
     }
 
-    public static synchronized boolean removeDonation(String user){
-        try{
+    public static synchronized boolean removeDonation(String user) {
+        try {
             Statement st = dbconn.createStatement();
             Integer userId = getUserId(user);
 
-            if(isDonated(user)){
+            if (isDonated(user)) {
                 String sqlQuery = "DELETE FROM donations WHERE user_id=" + userId + ";";
                 st.executeUpdate(sqlQuery);
 
                 return true;
             }
 
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
         }
         return false;
     }
 
-    public static synchronized ArrayList<Donation> getDonationList(){
-        ArrayList<Donation> results = new ArrayList<>();
-        try{
+    public static synchronized boolean extendDonation(String user) {
+        try {
             Statement st = dbconn.createStatement();
-            String query = "SELECT users.username, donations.donate_start, donations.donate_end " +
+            Integer userId = getUserId(user);
+            if (isDonated(user)) {
+                String sqlQuery = "UPDATE donations SET donate_end = donate_end+2592000000 WHERE user_id=" + userId+ ";";
+                st.executeUpdate(sqlQuery);
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public static synchronized Date getDonationEnd(String user){
+        try {
+            Statement st = dbconn.createStatement();
+            Integer userId = getUserId(user);
+            if (isDonated(user)) {
+                String sqlQuery = "SELECT donate_end FROM donations WHERE user_id=" + userId + ";";
+                ResultSet endDate = st.executeQuery(sqlQuery);
+
+                if(endDate.next()){
+                    long val = endDate.getLong("donate_end");
+                    return new Date(val);
+                }
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static synchronized ArrayList<Donation> getDonationList() {
+        ArrayList<Donation> results = new ArrayList<>();
+        try {
+            Statement st = dbconn.createStatement();
+            String query = "SELECT users.username,donations.donate_current_tier, donations.donate_start, donations.donate_end " +
                     "FROM donations " +
                     "JOIN users ON donations.user_id=users.id";
             ResultSet rs = st.executeQuery(query);
 
             //Handle if there is any rows in table.
-            if(!rs.next()){
-                return null;
+            if (!rs.next()) {
+                return new ArrayList<Donation>();
             }
             rs.beforeFirst(); //Undo the cursor before first.
 
-            while(rs.next()){
+            while (rs.next()) {
                 Donation donate = new Donation();
                 donate.setUsername(rs.getString("username"));
                 donate.setStartDate(rs.getLong("donate_start"));
                 donate.setEndDate(rs.getLong("donate_end"));
+                donate.setTier(rs.getString("donate_current_tier"));
                 results.add(donate);
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             sv.getLogger().warning("SQL ERROR: " + ex.getMessage());
         }
         return results;
